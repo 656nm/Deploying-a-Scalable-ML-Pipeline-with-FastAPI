@@ -4,7 +4,9 @@ For additional information see the Model Card paper: https://arxiv.org/pdf/1810.
 
 ## Model Details
 
-This model is a supervised machine learning classification model trained to predict whether a person’s income is greater than 50K per year or less than or equal to 50K per year. The model was trained on the UCI Census Income dataset used in this project. The implementation includes data preprocessing for categorical and numerical features, model training, and inference through a FastAPI application.
+This model is a supervised machine learning classification model trained to predict whether a person’s income is greater than 50K per year or less than or equal to 50K per year. The model used is a Random Forest classifier.
+
+The model was trained on the UCI Census Income dataset used in this project. The implementation includes data preprocessing for categorical and numerical features, model training, and inference through a FastAPI application.
 
 ## Intended Use
 
