@@ -1,29 +1,92 @@
-Working in a command line environment is recommended for ease of use with git and dvc. If on Windows, WSL1 or 2 is recommended.
+# Census Income Prediction API
 
-# Environment Set up (pip or conda)
-* Option 1: use the supplied file `environment.yml` to create a new environment with conda
-* Option 2: use the supplied file `requirements.txt` to create a new environment with pip
+This project trains a machine learning model to predict whether a person’s income is `>50K` or `<=50K` using census data. It includes data processing, model training, unit tests, slice-based model evaluation, and a REST API built with FastAPI.
+
+## Project Overview
+
+This project:
+- loads and cleans census income data
+- processes categorical and numerical features
+- trains a classification model
+- evaluates model performance
+- saves the trained model and encoder
+- exposes predictions through a FastAPI application
+- includes unit tests
+- reports model performance on slices of the data
+
+## GitHub Repository
+
+[Deploying-a-Scalable-ML-Pipeline-with-FastAPI](https://github.com/656nm/Deploying-a-Scalable-ML-Pipeline-with-FastAPI)
+
+## Environment Setup
+
+You can use either conda or pip.
+
+### Option 1: Conda
+
+```bash
+conda env create -f environment.yml
+conda activate <your_env_name>
     
 ## Repositories
-* Create a directory for the project and initialize git.
-    * As you work on the code, continually commit changes. Trained models you want to use in production must be committed to GitHub.
-* Connect your local git repo to GitHub.
-* Setup GitHub Actions on your repo. You can use one of the pre-made GitHub Actions if at a minimum it runs pytest and flake8 on push and requires both to pass without error.
-    * Make sure you set up the GitHub Action to have the same version of Python as you used in development.
+
+Github: https://github.com/656nm/Deploying-a-Scalable-ML-Pipeline-with-FastAPI
 
 # Data
-* Download census.csv and commit it to dvc.
-* This data is messy, try to open it in pandas and see what you get.
-* To clean it, use your favorite text editor to remove all spaces.
+
+The dataset used for this project is stored in: data/census.csv
+
 
 # Model
-* Using the starter code, write a machine learning model that trains on the clean data and saves the model. Complete any function that has been started.
-* Write unit tests for at least 3 functions in the model code.
-* Write a function that outputs the performance of the model on slices of the data.
-    * Suggestion: for simplicity, the function can just output the performance on slices of just the categorical features.
-* Write a model card using the provided template.
 
-# API Creation
-*  Create a RESTful API using FastAPI this must implement:
-    * GET on the root giving a welcome message.
-    * POST that does model inference.
+Run: python train_model.py
+
+Which will:
+- load the census dataset
+- split the data into train/test sets
+- process the features
+- train the model
+- save the trained model and encoder in the model/ directory
+- generate slice-based metrics in slice_output.txt
+
+# Slice-Based Model Performance
+
+Detailed model performance on data slices is saved in: slice_output.txt
+
+# Start the FastAPI app with:
+
+run uvicorn main:app --reload
+
+# The API will run at:
+
+http://127.0.0.1:8000
+
+# API Endpoints
+
+GET /
+(which Returns a welcome message.)
+
+Example response: in json
+{"message":"Welcome to the census income prediction API"}
+
+# POST /data/
+
+Returns an income prediction based on census feature inputs.
+
+## Model Card
+
+The model card for this project is included in `model_card_template.md`.
+
+
+## Project Files
+
+Main files included in this project:
+
+- `train_model.py`
+- `main.py`
+- `local_api.py`
+- `test_ml.py`
+- `slice_output.txt`
+- `model/model.pkl`
+- `model/encoder.pkl`
+
