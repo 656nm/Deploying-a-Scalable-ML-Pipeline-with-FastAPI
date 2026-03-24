@@ -1,8 +1,8 @@
-# Census Income Prediction API
+##Census Income Prediction API
 
-This project trains a machine learning model to predict whether a person’s income is `>50K` or `<=50K` using census data. It includes data processing, model training, unit tests, slice-based model evaluation, and a REST API built with FastAPI.
+This project trains a machine learning model to predict whether a person’s income is >50K or <=50K using census data. It includes data processing, model training, unit tests, slice-based model evaluation, and a REST API built with FastAPI.
 
-## Project Overview
+##Project Overview
 
 This project:
 - loads and cleans census income data
@@ -14,43 +14,36 @@ This project:
 - includes unit tests
 - reports model performance on slices of the data
 
-## GitHub Repository
+#Repository
 
-[Deploying-a-Scalable-ML-Pipeline-with-FastAPI](https://github.com/656nm/Deploying-a-Scalable-ML-Pipeline-with-FastAPI)
+GitHub: https://github.com/656nm/Deploying-a-Scalable-ML-Pipeline-with-FastAPI
 
-## Environment Setup
+#Environment Setup
 
 This project can be run either in the Udacity Workspace or on a local Ubuntu machine.
 
-Option 1: Udacity Workspace
-The workspace may already include most required tools. If so, open a terminal in the project folder and run the API directly.
+#Option 1: Udacity Workspace
+The workspace may already include the required tools. Open a terminal in the project folder and run the API directly.
 
-Option 2: Local Ubuntu
+#Option 2: Local Ubuntu
 Create the environment from the provided file and activate it:
 
 conda env create -f environment.yml
 conda activate fastapi
 
-### Option 1: Conda
+#Data
 
-```bash
-conda env create -f environment.yml
-conda activate fastapi
-    
-## Repositories
+The dataset used for this project is stored in:
+data/census.csv
 
-Github: https://github.com/656nm/Deploying-a-Scalable-ML-Pipeline-with-FastAPI
+#Model Training
 
-# Data
+Run:
+python train_model.py
 
-The dataset used for this project is stored in: data/census.csv
+#Model used: Random Forest Classifier
 
-# Model
-
-train_model.py
-Model used: Random Forest Classifier
-
-Which will:
+This will:
 - load the census dataset
 - split the data into train/test sets
 - process the features
@@ -58,44 +51,44 @@ Which will:
 - save the trained model and encoder in the model/ directory
 - generate slice-based metrics in slice_output.txt
 
-# Slice-Based Model Performance
+#Slice-Based Model Performance
 
-Detailed model performance on data slices is saved in: slice_output.txt
+Detailed model performance on data slices is saved in:
+slice_output.txt
 
-# Start the FastAPI app with:
+Run the FastAPI App
 
+#Start the API with:
 uvicorn main:app --reload
 
-# The API will run at:
-
+#The API will run at:
 http://127.0.0.1:8000
 
-# Test the API Endpoints
+#Test the API Endpoints
 
+#Test the root endpoint:
 curl http://127.0.0.1:8000/
 
-GET /
-(which Returns a welcome message.)
+#GET /
+Returns a welcome message.
 
-Example response: in json
+Example response:
 {"message":"Welcome to the census income prediction API"}
 
-# POST /data/
-
+#POST /data/
 Returns an income prediction based on census feature inputs.
 
-## Model Card
+#Model Card
 
-The model card for this project is included in `model_card.md`.
+The model card for this project is included in `model_card_template.md`.
 
-## Project Files
+#Project Files
 
 Main files included in this project:
-
-- `train_model.py`
-- `main.py`
-- `local_api.py`
-- `test_ml.py`
-- `slice_output.txt`
-- `model/model.pkl`
-- `model/encoder.pkl`
+- train_model.py
+- main.py
+- local_api.py
+- test_ml.py
+- slice_output.txt
+- model/model.pkl
+- model/encoder.pkl
