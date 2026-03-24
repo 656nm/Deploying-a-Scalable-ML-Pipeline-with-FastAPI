@@ -20,13 +20,22 @@ This project:
 
 ## Environment Setup
 
-You can use either conda or pip.
+This project can be run either in the Udacity Workspace or on a local Ubuntu machine.
+
+Option 1: Udacity Workspace
+The workspace may already include most required tools. If so, open a terminal in the project folder and run the API directly.
+
+Option 2: Local Ubuntu
+Create the environment from the provided file and activate it:
+
+conda env create -f environment.yml
+conda activate fastapi
 
 ### Option 1: Conda
 
 ```bash
 conda env create -f environment.yml
-conda activate <your_env_name>
+conda activate fastapi
     
 ## Repositories
 
@@ -36,10 +45,10 @@ Github: https://github.com/656nm/Deploying-a-Scalable-ML-Pipeline-with-FastAPI
 
 The dataset used for this project is stored in: data/census.csv
 
-
 # Model
 
-Run: python train_model.py
+train_model.py
+Model used: Random Forest Classifier
 
 Which will:
 - load the census dataset
@@ -55,13 +64,15 @@ Detailed model performance on data slices is saved in: slice_output.txt
 
 # Start the FastAPI app with:
 
-run uvicorn main:app --reload
+uvicorn main:app --reload
 
 # The API will run at:
 
 http://127.0.0.1:8000
 
-# API Endpoints
+# Test the API Endpoints
+
+curl http://127.0.0.1:8000/
 
 GET /
 (which Returns a welcome message.)
@@ -75,8 +86,7 @@ Returns an income prediction based on census feature inputs.
 
 ## Model Card
 
-The model card for this project is included in `model_card_template.md`.
-
+The model card for this project is included in `model_card.md`.
 
 ## Project Files
 
@@ -89,5 +99,3 @@ Main files included in this project:
 - `slice_output.txt`
 - `model/model.pkl`
 - `model/encoder.pkl`
-
-
